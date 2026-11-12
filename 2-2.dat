@@ -1,0 +1,30 @@
+model new 
+model rest "11.sav" 
+
+zone cmodel assign elastic 
+zone property density 1800 young 20E8 poisson 0.2
+;zone face apply stress-zz -1000 range position-z 10.0
+
+; z 방향 fix 
+zone gridpoint fix velocity-z 0.0 range position-z 0.0
+
+; x 방향  fix 
+; zone gridpoint fix velocity-x 0.0 range position-x 0.0 10.0 이렇게 써도 되는지 
+zone gridpoint fix velocity-x 0.0 range position-x 0.0 
+zone gridpoint fix velocity-x 0.0 range position-x 10.0 
+
+; y 방향 fix 
+zone gridpoint fix velocity-y 0.0 range position-y 0.0
+zone gridpoint fix velocity-y 0.0 range position-y 10.0
+
+model gravity (0,0,-9.81)
+
+;model solve 
+;zone face apply stress-zz -10000 range position-x 3.0 7.0 position-y 3.0 7.0 position-z 10.0
+;model cycle 1
+
+zone history displacement-z position (5.0, 5.0, 10.0)
+
+model solve 
+
+model save "2-2.sav" 

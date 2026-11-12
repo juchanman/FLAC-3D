@@ -1,0 +1,9 @@
+model new 
+model rest "11.sav" 
+zone face apply stress-zz -10000 range position-x 3.0 7.0 position-y 3.0 7.0 position-z 10.0
+
+;model cycle 1
+
+model solve 
+
+model save "12.sav" 

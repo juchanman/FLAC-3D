@@ -1,0 +1,11 @@
+model new 
+
+model rest "4-1.sav"
+
+zone gridpoint initialize displacement (0.0, 0.0, 0.0) 
+
+zone group 'excavation' range position-x 4.0 6.0 position-y 4.0 6.0 position-z 8.0 10.0 
+
+zone delete range group 'excavation' 
+
+model solve

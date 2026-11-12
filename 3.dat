@@ -1,0 +1,11 @@
+model new 
+
+model restore '2-2.sav' 
+
+zone gridpoint initialize displacement (0.0, 0.0, 0.0) 
+
+zone face apply stress-zz -1000000 range position-z 10.0 position-x 4.0 6.0 position-y 4.0 6.0
+
+model solve 
+
+model save "13.sav" 

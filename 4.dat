@@ -1,0 +1,31 @@
+model new 
+model restore "11.sav"
+
+zone cmodel assign elastic 
+
+;above ground water table z = 8.0 ~ 10.0 
+zone property density 1800 young 20E8 poisson 0.2 range position-z 8.0 10.0
+
+;under ground water table z = 0.0 ~ 8.0 
+zone property density 2000 young 20E8 poisson 0.2 range position-z 0.0 8.0 
+
+model gravity (0.0, 0.0, -9.81)
+
+zone water density 1000
+
+zone water plane origin (0.0, 0.0, 8.0) normal (0.0, 0.0, 1.0) 
+
+zone gridpoint fix velocity-z 0.0 range position-z 0.0 
+
+; x 방향  fix
+zone gridpoint fix velocity-x 0.0 range position-x 0.0 
+zone gridpoint fix velocity-x 0.0 range position-x 10.0 
+
+; y 방향 fix 
+zone gridpoint fix velocity-y 0.0 range position-y 0.0
+zone gridpoint fix velocity-y 0.0 range position-y 10.0
+
+
+model solve 
+
+model save "4-1.sav"

@@ -1,0 +1,22 @@
+;unit M : kg, L : m, T : sec   
+model new 
+model large-strain off 
+
+;zone create brick p 0 (0,0,0)   p 1 (400,0,0)   p 4 (400,200,0)   p 2 (0,200,0) & 
+;                  p 3 (0,0,100) p 6 (400,0,100) p 7 (400,200,100) p 5 (0,200,100)  size 400 200 100 
+
+zone create brick 
+;zone cmodel assign elastic 
+;zone property density 1800 young 10E6 poisson 0.2
+;zone face apply stress-zz -1000 range position-z 10.0
+
+;zone gridpoint fix velocity-z 0.0 range position-z 0.0
+;zone gridpoint fix velocity-x 0.0 range position-x 0.0 
+;zone gridpoint fix velocity-x 0.0 range position-x 10.0 
+
+;model gravity (0,0,-9.81) 
+
+
+;model solve 
+
+model save "11.sav" 

@@ -1,0 +1,29 @@
+model new 
+model rest "11.sav" 
+
+zone cmodel assign elastic 
+
+;above G.W.T + 8.0m 
+zone property density 1800 young 20E8 poisson 0.2 range position-z 8.0 10.0
+zone property density 2000 young 20E8 poisson 0.2 range position-z 0.0 8.0
+
+;apply pore water pressure 
+zone gridpoint initialize pore-pressure 74.48 gradientS (0.0, 0.0, -9.81) origin (0.0, 0.0, 0.0) range position-z 0.0 8.0 
+zone face apply stress-zz -1000 range position-z 10.0
+
+; z 방향 fix 
+zone gridpoint fix velocity-z 0.0 range position-z 0.0
+
+; x 방향  fix 
+zone gridpoint fix velocity-x 0.0 range position-x 0.0
+zone gridpoint fix velocity-x 0.0 range position-x 10.0
+
+; y 방향 
+zone gridpoint fix velocity-y 0.0 range position-y 0.0
+zone gridpoint fix velocity-y 0.0 range position-y 10.0
+
+model gravity (0,0,-9.81)
+
+model solve 
+
+model save "2-2.sav" 
