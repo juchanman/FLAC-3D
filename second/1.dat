@@ -1,0 +1,23 @@
+model new 
+
+zone create radial-cylinder 
+;zone create radial-tunnel 
+
+; radial-cylinder keyword
+;zone create radial-cylinder dimension 3 3 3 3 
+
+; 모델의 모서리 길이 (size는 zone 의 분할 갯수, edge는 모델의 모서리 길이 10m) (ratio  비율 설정) 
+;zone create brick size 5 5 5 edge 10 ratio 1 1 2.8
+
+
+; fill (내부 영역 채우기)
+;zone create radial-cylinder group 'rock' dimension 3 3 3 3 fill  group 'soil' 
+
+; merge (격자점 병합 merge false 같은 위치여도 병합 x)
+; 첫 번째 지반 모델
+;zone create brick size 5 5 5 point 0 (0,0,0) point 1 (10,0,0) point 2 (0,10,0) point 3 (0,0,10)
+
+; 두 번째 지반 모델
+;zone create brick size 5 5 5 point 0 (10,0,0) point 1 (20,0,0) point 2 (10,10,0) point 3 (10,0,10) merge true
+
+

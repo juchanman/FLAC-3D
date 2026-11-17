@@ -1,0 +1,35 @@
+model new 
+model large-strain off 
+
+; block 1
+zone create radial-cylinder dimension 3 3 3 3 group 'rock1' fill group 'tunnel1' point 0 (0,0,0) point 1 (10,0,0) point 2 (0,10,0) point 3 (0,0,10) merge true
+
+; block 2 : Y축 기준 90도 회전  
+zone create radial-cylinder dimension 3 3 3 3 group 'rock2' fill group 'tunnel2' point 0 (0,0,0) point 1 (0,0,-10) point 2 (0,10,0) point 3 (10,0,0) merge true 
+
+; block 3 : Y축 기준 180도 회전
+zone create radial-cylinder dimension 3 3 3 3 group 'rock3' fill group 'tunnel3' point 0 (0,0,0) point 1 (-10,0,0) point 2 (0,10,0) point 3 (0,0,-10) merge true
+
+; block 4 : Y축 기준 270도 회전
+zone create radial-cylinder dimension 3 3 3 3 group 'rock4' fill group 'tunnel4' point 0 (0,0,0) point 1 (0,0,10) point 2 (0,10,0) point 3 (-10,0,0) merge true ;merge false
+
+zone cmodel assign elastic ;range group 'rock' 
+
+;property
+zone property density 2500 young 10E8 poisson 0.25 ;range group 'rock'
+
+
+zone gridpoint fix velocity-y 0 range position-y 0 
+zone gridpoint fix velocity-y 0 range position-y 10
+
+zone gridpoint fix velocity-x 0 range position-x 10 
+zone gridpoint fix velocity-x 0 range position-x -10 
+
+zone gridpoint fix velocity-z 0 range position-z -10 
+
+
+model gravity (0, 0, -9.81) 
+
+model solve
+
+model save 'radial-cylinder.sav'

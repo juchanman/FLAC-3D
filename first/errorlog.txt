@@ -1,0 +1,4 @@
+"FLAC3D 7.00.160"
+2026:11:5:5:27:46
+C:\Program Files\Itasca\FLAC3D700\exe64\flac3d700_gui.exe
+Windows 10 Pro : 26200

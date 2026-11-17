@@ -1,0 +1,11 @@
+model new 
+
+model restore 'radial-cylinder.sav'
+
+zone cmodel assign null range group 'tunnel1' or 'tunnel2' or 'tunnel3' or 'tunnel4' 
+
+model solve 
+
+model save '11.sav'
+
+
